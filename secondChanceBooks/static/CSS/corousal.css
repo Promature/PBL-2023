@@ -1,0 +1,156 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+    color: rgb(var(--bs-tertiary-color-rgb));
+  }
+  
+  
+  /* CUSTOMIZE THE CAROUSEL
+  -------------------------------------------------- */
+  
+  /* Carousel base class */
+  .carousel {
+    margin-bottom: 4rem;
+  }
+  /* Since positioning the image, we need to help out the caption */
+  .carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+  }
+  
+  /* Declare heights because of positioning of img element */
+  .carousel-item {
+    height: 32rem;
+  }
+  #img1{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 500px;
+    background-image: url('../Images/vedant2.jpeg');
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    margin: 0 auto;
+    background-size:cover ;
+   /* margin-left: 2rem; */
+  } 
+  #img2{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 500px;
+    background-image: url('../Images/kedar.jpeg');
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    margin: 0 auto;
+    background-size: cover;
+  }
+  #img3{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 500px;
+    background-image: url('../Images/e2771387-7bd6-41f0-b875-44e854e5997a.jpg');
+    background-repeat: no-repeat;
+    background-size: 15rem;
+    margin: 0 auto;
+    background-size: cover;
+  }
+  
+  /* MARKETING CONTENT
+  -------------------------------------------------- */
+  
+  /* Center align the text within the three columns below the carousel */
+  .marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  /* rtl:begin:ignore */
+  .marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+  }
+  /* rtl:end:ignore */
+  
+  
+  /* Featurettes
+  ------------------------- */
+  
+  .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+  
+  /* Thin out the marketing headings */
+  /* rtl:begin:remove */
+  .featurette-heading {
+    letter-spacing: -.05rem;
+  }
+  
+  /* rtl:end:remove */
+  
+  /* RESPONSIVE CSS
+  -------------------------------------------------- */
+  
+  @media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+  
+    .featurette-heading {
+      font-size: 50px;
+    }
+  }
+  
+  @media (min-width: 62em) {
+    .featurette-heading {
+      margin-top: 7rem;
+    }
+  }
+
+  #image_1{
+    width: 30%;
+  }
+   #image_2{
+    width: 33%;
+  }
+  #image_3{
+    width: 33%;
+  }
+  .sc_med_ic{   
+    width: 100%;
+    height: 2rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: .8rem;
+  }
+  .sc_med_ic li {
+    display: flex;
+    justify-content: center;
+    width: 2 rem;
+  }
+  .sc_med_ic li a{
+    width: 100%;
+    height: 2 rem;
+    background-repeat: no-repeat;
+    background-size: 1.3rem 1.3rem;
+    transition: all .05s;
+    opacity: .7;
+  }
+  .sc_med_ic li a:hover{
+    transform: translateY(-7px);
+  }
+  .li_link{
+    background-image: url('../Images/linkden.png');
+  }
+  .in_link{
+    background-image: url('../Images/instagram.png');
+  }
+  .fb_link{
+    background-image: url('../Images/images.png');
+  }

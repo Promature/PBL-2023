@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Add book{% endblock title %}
+{% block body %}
+
+<form class="" method="post" action="/uploadbook" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Add book</h1>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="bname" id="floatingname" placeholder="bookname" required>
+        <label for="floatingname">name</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="author" id="floatingbname" placeholder="author" required>
+        <label for="floatingbname">author</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="genre" id="floatinggenre" placeholder="genre" required>
+        <label for="floatinggenre">genre</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" name="pub_date" id="pub_date" placeholder="publish date" required>
+        <label for="pub_date">publish date</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
+        <label for="price">price</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="desc" id="desc" placeholder="desc" required>
+        <label for="desc">desc</label>
+    </div>
+    <div >
+        <label for="img">Select image:</label>
+        <input type="file"  id="img" name="bimg" accept="image/*" required>
+    </div>
+
+    <button class="w-100 btn  btn-primary" type="submit" value ="upload">Submit</button>
+</form>
+
+{% endblock body %}

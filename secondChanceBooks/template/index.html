@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock title %}
+{% block body %}
+{% load static %}
+ 
+<!-- corousal -->
+<div id="carouselExample" class="carousel slide w-50 mx-auto pb-5 pt-2" data-bs-ride="carousel">
+    
+    <div class="carousel-inner">
+    {% for i in product %}
+      <div class="carousel-item active" data-bs-target="3000">
+        <img src="/media/{{i.bookimage}}" class="d-block w-100 object-fit-fill" height="300px" alt="new books appear here">
+      </div>
+      {% endfor %}
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+  <!-- recommendation rows -->
+<h3 class="container" style="font-family: cursive;">Explore</h3>
+<div class="album pt-2 pb-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 pb-3 mt-1" style="background-color: #DBE9FA;">
+            {% for i in allProduct%}
+            <div class="col">
+                <div class="card shadow p-3">
+                    <img src="/media/{{i.bookimage}}" class = "card-img-top" height='200px'>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name|slice:48}}</h5>
+                        <p class="card-text">&#8377 {{i.price}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="bookview/{{i.name}}" class="btn btn-primary">View</a>   
+                            </div>
+                            <small class="text-body-secondary">{{i.pub_date}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- <h4 class="container">Recommendation 2</h4>
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for i in allProduct%}
+            <div class="col">
+                <div class="card shadow p-3">
+                    <img src="/media/{{i.bookimage}}" class = "card-img-top" height='200px'>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name|slice:48}}</h5>
+                        <p class="card-text">&#8377 {{i.price}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="bookview/{{i.name}}" class="btn btn-primary">View</a>   
+                            </div>
+                            <small class="text-body-secondary">{{i.pub_date}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<h4 class="container">Recommendation 3</h4>
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for i in allProduct%}
+            <div class="col">
+                <div class="card shadow p-3">
+                    <img src="/media/{{i.bookimage}}" class = "card-img-top" height='200px'>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name|slice:48}}</h5>
+                        <p class="card-text">&#8377 {{i.price}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="bookview/{{i.name}}" class="btn btn-primary">View</a>   
+                            </div>
+                            <small class="text-body-secondary">{{i.pub_date}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> -->
+{% endblock body %}

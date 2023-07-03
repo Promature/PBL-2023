@@ -1,0 +1,314 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cover{% endblock title %} | Second Chance Books</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+  </style>
+  <!-- added manually -->
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/corousal.css' %}">
+
+  <meta name="theme-color" content="#712cf9">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Second Chance Books</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav me-4 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" href="#">Genre</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" name='searchctg' placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success me-4" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav  mb-2 mb-lg-0 px-2">
+          <li class="nav-item">
+            <a class="nav-link active" href="sellbook">Become Seller</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{request.user.email}}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="profile">General</a></li>
+              <li><a class="dropdown-item" href="sellbook">Sell books</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="logout">Logout</a></li>
+            </ul>
+
+          </li>
+          {% else %}
+          <a type="button" class="btn btn-outline-light mx-2" href='login'>Login</a>
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  <div class="container">
+    <!-- Marketing messaging and featurettes
+   ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <!-- START THE FEATURETTES -->
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading fw-normal lh-1">Unlock the Treasure Trove.<span class="text-body-secondary">
+              Explore Second Hand Books Galore!</span></h2>
+          <p class="lead">Dive into a world of literary wonders at our second hand book emporium. Discover a treasure
+            trove of preloved books that will ignite your imagination and satisfy your craving for captivating stories.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg> -->
+          <img src="../static/Images/tag1new.svg" alt="image" height="500" width="500">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading fw-normal lh-1">Give Books a Second Chance. <span class="text-body-secondary">
+              Shop our Curated Collection of Preloved Literature</span></h2>
+          <p class="lead"> Explore the pages that have been loved and cherished before, as you embark on a journey
+            filled with nostalgia, inspiration, and literary surprises. Rediscover the joy of giving books a second
+            chance and be a part of their remarkable literary journeys.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg> -->
+          <img src="../static/Images/tag2.png" alt="image2" height="400" width="400">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading fw-normal lh-1">Find Your Next Beloved Story. <span class="text-body-secondary">
+              Explore our Vast Selection of Second Hand Books.</span></h2>
+          <p class="lead">Whether you're searching for a timeless classic, a thrilling mystery, or a thought-provoking
+            non-fiction title, our collection has something for everyone. Discover hidden literary gems, embark on new
+            adventures, and let the pages transport you to extraordinary worlds.</p>
+        </div>
+        <div class="col-md-5">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg> -->
+          <img src="../static/Images/tag3.svg" alt="image3" height="500" width="500">
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="mb-4 ">
+        <h1 style="font-family:verdana">Our Team</h1>
+      </div>
+      <div class="row gap-3 text-center">
+        <div class="col-lg-3 shadow" id="image_1">
+          <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg> -->
+          <div id="img1"></div>
+          <h2 class="fw-normal">Vedant Pawar</h2>
+          <p>Front-End Devloper</p>
+          <p class="social-med">
+          <ul class="sc_med_ic">
+            <li><a href="https://www.instagram.com"><img src="../static/Images/instagram.png" width="90%"
+                  height="90%"></a></li>
+            <li><a href="https://in.linkedin.com"><img src="../static/Images/linkden2.png" width="100%"
+                  height="100%"></a></li>
+            <li><a href="https://www.facebook.com"><img src="../static/Images/images.png" width="100%"
+                  height="100%"></a></li>
+          </ul>
+          </p>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 shadow" id="image_2">
+          <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false" ><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg> -->
+          <div id="img2"></div>
+          <h2 class="fw-normal">Kedar Pawar</h2>
+          <p>Back-end Devloper</p>
+          <p class="social-med">
+          <ul class="sc_med_ic">
+            <li><a href="https://www.instagram.com"><img src="../static/Images/instagram.png" width="90%"
+                  height="90%"></a></li>
+            <li><a href="https://in.linkedin.com"><img src="../static/Images/linkden2.png" width="100%"
+                  height="100%"></a></li>
+            <li><a href="https://www.facebook.com"><img src="../static/Images/images.png" width="100%"
+                  height="100%"></a></li>
+          </ul>
+          </p>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 shadow" id="image_3">
+          <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg> -->
+          <div id="img3"></div>
+          <h2 class="fw-normal">Manshu Khajuria</h2>
+          <p>Database</p>
+          <p class="social-med">
+          <ul class="sc_med_ic">
+            <li><a href="https://www.instagram.com"><img src="../static/Images/instagram.png" width="90%"
+                  height="90%"></a></li>
+            <li><a href="https://in.linkedin.com"><img src="../static/Images/linkden2.png" width="100%"
+                  height="100%"></a></li>
+            <li><a href="https://www.facebook.com"><img src="../static/Images/images.png" width="100%"
+                  height="100%"></a></li>
+          </ul>
+          </p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="container-fluid bg-dark bg-body-tertiary text-center mt-3 pt-3" data-bs-theme="dark">
+    <footer class="section-footer border-top">
+      <div class="container-fluid">
+        <section class="footer-top">
+          <div class="row">
+            <aside class="col-md-4">
+              <article class="mr-3">
+                <p class="mt-3 description text-muted">At Second Chance Books, we believe in the enduring power of books and their ability to transform lives. Our mission is to provide access to affordable, quality second hand books while promoting a love for reading.
+                </p>
+              </article>
+            </aside>
+            <aside class="col-sm-2 col-md-2">
+              <h6 class="title text-dark-emphasis">About</h6>
+              <ul class="list-unstyled">
+                <li> <a style="text-decoration: none;" href="#" data-abc="true">About us</a></li>
+              </ul>
+            </aside>
+            <aside class="col-sm-3 col-md-2">
+              <h6 class="title text-dark-emphasis">Services</h6>
+              <ul class="list-unstyled">
+                <li> <a style="text-decoration: none;" href="#" data-abc="true">Help center</a></li>
+              </ul>
+            </aside>
+            <aside class="col-sm-3 col-md-2">
+              <h6 class="title text-dark-emphasis">For users</h6>
+              <ul class="list-unstyled">
+                <li> <a style="text-decoration: none;" href="login" data-abc="true"> User Login </a></li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+        
+      </div>
+      <div class="py-2"><section class="footer-copyright border-top text-dark-emphasis">
+        <!-- <p class="float-left text-muted"> &copy; 2023 Second chance books All rights resetved </p> -->
+         <big>Copyright &copy;2023 All rights reserved.</big>
+      </section></div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

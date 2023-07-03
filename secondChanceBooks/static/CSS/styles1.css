@@ -1,0 +1,42 @@
+body{
+    background-size: cover;
+}
+.Other-information{
+    background-color:#eaece5;
+    border-style: groove;
+    border-color: #1e1e1e;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius:5px;
+    font-family: Lucida Console;
+}
+.User-name{
+    color: #3e4444;
+    text-align: center;
+    font-family: papyrus;
+}
+.books-sold{
+    background-color:#eaece5;
+    border-style: groove;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius:5px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-family: Lucida Console;
+}   
+.Mid-text{
+    color:#3e4444 ;
+    margin-left: 25%;   
+}
+.books-bougth{
+    background-color:#eaece5;
+    border-style: groove;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius:5px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-family: Lucida Console;
+
+}

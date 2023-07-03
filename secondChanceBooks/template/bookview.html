@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}Book name{% endblock title %}
+{% block body %}
+
+{% comment %} flipkart implementation {% endcomment %}
+{%load static%}
+<div class="container p-2 product my-5 shadow-lg">
+
+  <div class="row">
+
+    <div class="col-4 text-center">
+      <img src="/media/{{product.bookimage}}" class="d-block p-3 w-100 object-fit-fill" alt="...">
+      <div class="grid gap-3 pt-2">
+        <button type="button" data-product={{product.id}} data-action = "add" class="btn btn-success mx-4 update-cart">add to cart</button>
+      </div>
+
+    </div>
+    <div class="col-8 text-start  bg-secondary text-white">
+      <div class="headingNprice">
+        <div class="headding">
+
+          <h1 class="overflow-x-auto">{{product.name}}
+          </h1>
+        </div>
+        <hr>
+        <div class="pricing">
+          <div class="fs-5"><b>price</b> </div>
+          <div class="fs-3">&#8377; {{product.price}}</div>
+        </div>
+      </div>
+      <div class="desc">
+        {{product.desc}}
+      </div>
+
+      <!-- specifications div -->
+      <hr>
+      <div class="bookinfo">
+        <div class="fs-3 py-2 px-2">Specifications</div>
+      </div>
+      <div>
+        <div class="info py-2 px-2">
+          <table>
+            <tbody>
+              <tr class="pb-2">
+                <td class="pe-4">Title</td>
+                <td>{{product.name}}</td>
+              </tr>
+              <tr class="pb-2">
+                <td class="pe-4">
+                  author
+                </td>
+                <td>{{product.author}}</td>
+              </tr>
+              <tr class="pb-2">
+                <td class="pe-4">
+                  Time used
+                </td>
+                <td>{{product.time_used}}</td>
+              </tr>
+              <tr class="pb-2">
+                <td class="pe-4">
+                  Publishing date
+                </td>
+                <td>{{product.pub_date}}</td>
+              </tr>
+              <!-- <tr class="pb-2">
+                <td class="pe-4">
+                  Edition
+                </td>
+                <td>6 th</td>
+              </tr> -->
+              <tr class="pb-2">
+                <td class="pe-4">
+                  Genre
+                </td>
+                <td>{{product.genre}}</td>
+              </tr>
+              <tr class="pb-2">
+                <td class="pe-4">
+                  Area
+                </td>
+                <td>{{area}}</td>
+              </tr>
+              <tr class="pb-2">
+                <td class="pe-4">
+                  Current Owner
+                </td>
+                <td>{{ownerName}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

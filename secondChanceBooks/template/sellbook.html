@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Add book{% endblock title %}
+{% block body %}
+<div class="my-5">
+<div class="signupForm w-50 mx-auto">
+    <form class="rounded-2 shadow p-3" method="post" action="/sellbook"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal text-center">Add book</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="bname" id="floatingname" placeholder="bookname" required>
+            <label for="floatingname">Title of book</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="author" id="floatingbname" placeholder="author" required>
+            <label for="floatingbname">Author</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="genre" id="floatinggenre" placeholder="genre" required>
+            <label for="floatinggenre">Genre</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" name="pub_date" id="pub_date" placeholder="publish date" required>
+            <label for="pub_date">Publish Date</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="time-used" id="time-used" placeholder="time-used" required>
+            <label for="time-used">How old is book?</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="price" id="price" placeholder="price" required>
+            <label for="price">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="desc" id="desc" placeholder="desc" required>
+            <label for="desc">Description of book</label>
+        </div>
+        <div>
+            <label for="img">Select Image:</label>
+            <input type="file" id="img" name="bimg" accept="image/*" required>
+        </div>
+        <div class="text-center pt-3">
+            <button class="w-25 btn  btn-primary" type="submit" value="upload">Submit</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+{% endblock body %}
